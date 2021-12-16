@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "result": {
+    "include_total": true,
+    "resource_id": "2574dc69-839b-4507-92bd-bcf2057066be",
+    "fields": [
+      {
+        "type": "int",
+        "id": "cname"
+      },
+      {
+        "type": "text",
+        "id": "ur"
+      }
+    ],
+    "records_format": "objects",
+    "records": [
+      {
+        "cname": "選取聯絡人",
+        "ur": ""
+      }
+    ],
+    "offset": 0,
+    "total": 100,
+    "limit": 20
+  }
+}
