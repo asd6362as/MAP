@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+  <meta charset="UTF-8" />
+  <title>緊急聯絡人資料</title>
+
+  <style type=”text/javascript”>
+    /* @media screen and(min-width:1280px) {};
+
+    @media screen and(max-width:1279px) and(min-width:768px) {};
+
+    @media screen and(max-width:767px) {}; */
+  </style>
+  <script type="text/javascript">
+    var strUrl=location.search;
+    var getPara, ParaVal;
+    var aryPara = [];
+    window.onload = function () {
+        document.getElementById("name").value=localStorage.getItem("name");
+        if (localStorage.getItem("ggemail") != null){
+        document.getElementById("blood").value=localStorage.getItem("blood");}
+        document.getElementById("allergen").value=localStorage.getItem("allergen");
+        document.getElementById("ggname").value=localStorage.getItem("ggname");
+        document.getElementById("ggphone").value=localStorage.getItem("ggphone");
+        document.getElementById("ggemail").value=localStorage.getItem("ggemail");
+    }
+  </script>
+</head>
+
+<body>
+  <script
+      type="text/javascript"
+    ></script>
+  <div id="top" style="
+        background-color: #a52a2a;
+        color: white;
+        font-size: 44px;
+        position: relative;
+        width: 100vw;
+        height: 56px;
+        margin: -8px 0px 0px -8px;
+      ">
+    緊急救援資訊
+  </div>
+  <form action="EC.html" method="get">
+    <h2>個人資訊</h2>
+    姓名：<input type=" text" id="name" name="name" placeholder=" 本人姓名" required />
+    <br />
+    血型：<select id="blood" name="blood" required>
+      <option>請選擇</option>
+      <option>A</option>
+      <option>B</option>
+      <option>O</option>
+      <option>AB</option>
+    </select>
+    <br />
+    過敏源：<input id="allergen" type=" text" name="allergen" placeholder="如果沒有請填無" required />
+    <br />
+    <hr />
+    <h2>聯絡人資訊</h2>
+    姓名：<input id="ggname" type="text" name="ggname" placeholder=" 緊急聯絡人姓名" required />
+    <br />
+    手機：<input id="ggphone" type="tel" name="ggphone" placeholder="緊急聯絡人電話" pattern="[0][9][0-9]{8}" required />
+    <br />
+    Email：<input id="ggemail" type="email" name="ggemail" placeholder="緊急聯絡人信箱" size="19" required />
+
+    <br />
+    <br />
+    <input type="submit" value=" " style="
+          width: 96px;
+          height: 32px;
+          border: none;
+          bottom: 5%;
+          background-image: url(botton/sr1.png);"
+      ontouchstart="this.style.background ='url(botton/sr2.png)';"
+      ontouchend="this.style.background ='url(botton/sr1.png)';"
+      onmousedown="this.style.background ='url(botton/sr2.png)';"
+      onmouseup="this.style.background='url(botton/sr1.png)';"
+      onmouseout="this.style.background='url(botton/sr1.png)';" />
+    <input type="reset" name="reset" value=" " style="
+          width: 96px;
+          height: 32px;
+          border: none;
+          bottom: 5%;
+          background-image: url(botton/rs1.png);"
+      ontouchstart="this.style.background ='url(botton/rs2.png)';"
+      ontouchend="this.style.background ='url(botton/rs1.png)';"
+      onmousedown="this.style.background ='url(botton/rs2.png)';"
+      onmouseup="this.style.background='url(botton/rs1.png)';"
+      onmouseout="this.style.background='url(botton/rs1.png)';"/>
+
+</body>
+
+</html>

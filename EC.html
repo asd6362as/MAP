@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>緊急聯絡人資料</title>
+
+  <script type="text/javascript">
+    var strUrl=location.search;
+    var getPara, ParaVal;
+    var aryPara = [];
+   window.onload = function () {
+     var c = localStorage.setItem("SURL2", location.search);
+        if (strUrl.indexOf("?") != -1) {
+          var getSearch = strUrl.split("?");
+          getPara = getSearch[1].split("&");
+          for (var i = 0; i < getPara.length; i++) {
+            ParaVal = getPara[i].split("=");
+            aryPara.push(ParaVal[0]);
+            aryPara[ParaVal[0]] = decodeURI(ParaVal[1]);
+          }
+          var change_email=aryPara["ggemail"].split("%40");
+          aryPara["ggemail"]=change_email[0]+"@"+change_email[1];
+          for (var i = 0; i < aryPara.length; i++) {
+            localStorage.setItem(aryPara[i],aryPara[aryPara[i]])
+          }
+        }
+        document.getElementById("name").innerText=localStorage.getItem("name");
+        document.getElementById("blood").innerText=localStorage.getItem("blood");
+        document.getElementById("allergen").innerText=localStorage.getItem("allergen");
+        document.getElementById("ggname").innerText=localStorage.getItem("ggname");
+        document.getElementById("ggphone").innerText=localStorage.getItem("ggphone");
+        document.getElementById("ggemail").innerText=localStorage.getItem("ggemail");
+    }
+  </script>
+</head>
+
+<body>
+<script
+      type="text/javascript"
+    ></script>
+  <div id="top" style="
+        background-color: #a52a2a;
+        color: white;
+        font-size: 44px;
+        position: relative;
+        width: 100vw;
+        height: 56px;
+        margin: -8px 0px 0px -8px;
+      ">
+    緊急救援資訊<input id="EC1" type="button" value="📝"
+      style="width: 40px;height: 40px; right:10px;top: 8px; position: absolute;border: none; background-color: #a52a2a;font-size: 25px;"
+      onClick="location.href='edit.html'" />
+
+  </div>
+  <div>
+    <h2>個人資訊</h2>
+    姓名:<div id="name"></div>
+    血型:<div id="blood"></div>
+    過敏原:<div id="allergen"></div>
+    <hr />
+    <h2>聯絡人資訊</h2>
+    姓名:<div id="ggname"></div>
+    手機:<div id="ggphone"></div>
+    Email:<div id="ggemail"></div>
+  </div>
+  <input id="EC1" type="button" value=" " style="
+          position: absolute;
+          width: 120px;
+          height: 40px;
+          border: none;
+          right: 0px;
+          bottom: 5%;
+          background-image: url(botton/bm1.png);
+        "
+      ontouchstart="this.style.background ='url(botton/bm2.png)';"
+      ontouchend="this.style.background ='url(botton/bm1.png)';"
+      onmousedown="this.style.background ='url(botton/bm2.png)';"
+      onmouseup="this.style.background='url(botton/bm1.png)';"
+      onmouseout="this.style.background='url(botton/bm1.png)';"
+      onClick="location.href='index.html'" />
+
+</body>
+</html>

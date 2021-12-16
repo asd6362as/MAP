@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
+  <title>緊急聯絡人資料</title>
+  <script type="text/javascript">
+    var strUrl1=location.search;
+    var getPara, ParaVal, qqq, getSearch,ss;
+    var getPara1, ParaVal1, getSearch1;
+    var aryPara = [];
+    var aryPara1 = [];
+    var tx= [];
+    var len;
+    var surl2,surl3;
+  window.onload = function () {
+    sl =sessionStorage.length;
+        if( localStorage.getItem("SURL") == null){
+        localStorage.setItem("SURL","^?name1= &blood= &allergen= &ggname= &ggphone= &ggemail= ");
+      }
+    surl2 = localStorage.getItem("SURL")
+    surl3 = surl2.split("^")
+    ReadOption();
+    if (sl>3 && sessionStorage.getItem("ggname") == null){
+    ds(theList);
+    }
+   }
+    //  var c = localStorage.setItem("SURL2", location.search);
+    /*function save(strUrl) {
+    if (strUrl.indexOf("?") != -1) {
+    var getSearch = strUrl.split("?");
+    getPara = getSearch[1].split("&");
+    for (var i = 0; i < getPara.length; i++) {
+      ParaVal = getPara[i].split("=");
+      aryPara.push(ParaVal[0]);
+      aryPara[ParaVal[0]] = decodeURI(ParaVal[1]);
+    }
+    for (var i = 0; i < aryPara.length; i++) {
+      localStorage.setItem(aryPara[i], aryPara[aryPara[i]]);
+    }
+
+  }
+    }*/
+        function save(strUrl) {
+    getSearch = strUrl.split("$");
+    //getPara = getSearch[1].split("&");
+    //for (var i = 0; i < getPara.length; i++) {
+      //ParaVal = getPara[i].split("=");
+      //aryPara.push(getpara);
+      qqq=decodeURI(getSearch[1]);
+      if (qqq !== ""){
+      localStorage.setItem( qqq, getSearch[0]);
+      //}
+      }
+    //for (var i = 0; i < aryPara.length; i++) {
+     // localStorage.setItem( qqq, getpara);
+   // }
+
+  }
+  </script>
+</head>
+
+
+<body>
+  <script
+      type="text/javascript"
+    ></script>
+  <div id="top" style="
+        background-color: #a52a2a;
+        color: white;
+        font-size: 44px;
+        position: relative;
+        width: 100vw;
+        height: 56px;
+        margin: -8px 0px 0px -8px;
+      ">
+    緊急救援資訊
+  </div>
+  <script>
+function deleteOption(list){
+  var index=list.selectedIndex;
+  var te=list.options[index].text;
+  var v=list.options[index].value;
+  if(v != "?name1=&blood=&allergen=&ggname=&ggphone=&ggemail="){
+	if (index>=0){
+    localStorage.removeItem(te);
+    list.options[index]=null;
+  }
+   /*localStorage.removeItem("name"+vl);
+    localStorage.removeItem("blood"+vl);
+    localStorage.removeItem("allergen"+vl);
+    localStorage.removeItem("ggname"+vl);
+    localStorage.removeItem("ggphone"+vl);
+    localStorage.removeItem("ggemail"+vl);*/
+ } else{
+alert("請選擇聯絡人");
+}
+add1();}
+function addOption1(list, text, value){
+	var index=list.options.length;
+	list.options[index]=new Option(text, value);
+	list.selectedIndex=index;
+}
+function addOption(list, text, value){
+  add1();
+  if(text == ""){
+    alert("請輸入聯絡人姓名!")
+  }
+  else
+  {
+  var n = tx.includes(text);
+  if(n == false){
+	var index=list.options.length;
+	list.options[index]=new Option(text, value);
+	list.selectedIndex=index;
+}}
+}
+function add1() {
+    var o = document.getElementById('theList');
+    len = o.length;
+    tx=[]
+    for (i=0 ; i<len ; i++){
+    tx.push(o[i].text);
+    }
+}
+function ReadOption() {
+  len1 =localStorage.length;
+  for (i = 0 ; i<len1 ; i++){
+  s = localStorage.key(i);
+  ss =localStorage.getItem(s);
+  var sss=ss.startsWith("?name");
+  if(sss == true){
+  if(ss !== surl3[1]){
+  addOption1(theList,s,ss,false);
+  }
+else if(ss === surl3[1]){
+  var s1 = s
+  var ss1 = ss;
+}}}
+addOption1(theList,s1,ss1,true);
+add1();
+}
+ function ds(list) {
+    var index=list.selectedIndex;
+    var te1=list.options[index].text;
+    var v1=list.options[index].value;
+        if (v1.indexOf("?") != -1) {
+          var getSearch = v1.split("?");
+          getPara = getSearch[1].split("&");
+          for (var i = 0; i < getPara.length; i++) {
+            ParaVal = getPara[i].split("=");
+            aryPara.push(ParaVal[0]);
+            aryPara[ParaVal[0]] = decodeURI(ParaVal[1]);
+          }
+        //  var change_email=aryPara["ggemail"].split("%40");
+         // aryPara["ggemail"]=change_email[0]+"@"+change_email[1];
+          for (var i = 0; i < aryPara.length; i++) {
+            sessionStorage.setItem(aryPara[i],aryPara[aryPara[i]])
+          }
+        }
+        document.getElementById("name1").innerText=sessionStorage.getItem("name1");
+        document.getElementById("blood").innerText=sessionStorage.getItem("blood");
+        document.getElementById("allergen").innerText=sessionStorage.getItem("allergen");
+        document.getElementById("ggname").innerText=sessionStorage.getItem("ggname");
+        document.getElementById("ggphone").innerText=sessionStorage.getItem("ggphone");
+        document.getElementById("ggemail").innerText=sessionStorage.getItem("ggemail");
+  }
+</script>
+
+  <form action="test.html" method="GET">
+  <h1>編輯聯絡人<br><h1>
+	<select id=theList  width="120" style="width: 120px" >
+</select>
+<p>
+  <hr />
+ <h2>個人資訊</h2>
+    姓名：<input type=" text" id="name1" name="name1" placeholder=" 本人姓名"  />
+    <br />
+    血型：<input id="blood" name="blood" placeholder="請填寫大寫A、B、O、AB" >
+    <br />
+    過敏源：<input id="allergen" type=" text" name="allergen" placeholder="如果沒有請填無"  />
+    <br />
+    <hr />
+    <h2>聯絡人資訊</h2>
+    姓名：<input id="ggname" type="text" name="ggname" placeholder=" 緊急聯絡人姓名"  />
+    <br />
+    手機：<input id="ggphone" type="tel" name="ggphone" placeholder="緊急聯絡人電話" pattern="[0][9][0-9]{8}"  />
+    <br />
+    Email：<input id="ggemail" type="email" name="ggemail" placeholder="緊急聯絡人信箱" size="19"  />
+<br><br><br>
+<input type="button" value="" onclick="addOption(theList, ggname.value,'?name1'+'='+name1.value+'&blood'+'='+blood.value+'&allergen'+'='+allergen.value+'&ggname'+'='+ggname.value+'&ggphone'+'='+ggphone.value+'&ggemail'+'='+ggemail.value+ '$' +ggname.value);save('?name1'+'='+name1.value+'&blood'+'='+blood.value+'&allergen'+'='+allergen.value+'&ggname'+'='+ggname.value+'&ggphone'+'='+ggphone.value+'&ggemail'+'='+ggemail.value+ '$' + ggname.value)" style="
+          position: absolute;
+          width: 90px;
+          height: 30px;
+          border: none;
+          background-image: url(botton/new.png);
+        ">
+<input type="button" value="" onclick="deleteOption(theList)"
+style="
+          position: absolute;
+          width: 90px;
+          height: 30px;
+          left:110px;
+          border: none;
+          background-image: url(botton/del.png);
+        "><br>
+</form>
+
+<input type="submit" value=" " style="
+          position: absolute;
+          width: 96px;
+          height: 32px;
+          border: none;
+          right: 0px;
+          bottom: 5%;
+          background-image: url(botton/sr1.png);"
+      ontouchstart="this.style.background ='url(botton/sr2.png)';"
+      ontouchend="this.style.background ='url(botton/sr1.png)';"
+      onmousedown="this.style.background ='url(botton/sr2.png)';"
+      onmouseup="this.style.background='url(botton/sr1.png)';"
+      onmouseout="this.style.background='url(botton/sr1.png)';"
+      onClick="location.href='test.html'"/>
+
+</body>
+
+</html>
